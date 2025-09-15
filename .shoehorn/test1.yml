@@ -14,11 +14,3 @@ links:
     url: https://github.com/imbabamba/shoehorn
   - name: Documentation
     url: https://docs.shoehorn.example.com
-interfaces:
-  http:
-    baseUrl: http://localhost:8080
-    openapi: ./api/openapi.yaml
-relations:
-  - type: depends_on
-    target: database:postgresql
-    notes: Primary data store
