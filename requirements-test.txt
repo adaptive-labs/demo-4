@@ -1,0 +1,9 @@
+# Test Requirements
+# This file lists the minimal requirements for running tests
+
+# No external dependencies required for basic testing
+# Python 3.x standard library is sufficient
+
+# Optional: For enhanced testing capabilities, add:
+# pytest>=6.0.0
+# coverage>=5.0.0
