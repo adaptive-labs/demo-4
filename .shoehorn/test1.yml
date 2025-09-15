@@ -1,7 +1,7 @@
 schemaVersion: 1
 service:
-  id: shoehorn-test1
-  name: Shoehorn test1
+  id: test1
+  name: test1
   type: service
 owner:
   - type: team
