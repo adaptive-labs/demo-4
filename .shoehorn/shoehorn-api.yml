@@ -1,0 +1,38 @@
+schemaVersion: 1
+service:
+  id: shoehorn-api
+  name: Shoehorn API
+  type: api
+owner:
+  - type: team
+    id: platform-team
+lifecycle: production
+tags:
+  - api
+  - golang
+  - graphql
+  - catalog
+links:
+  - name: Repository
+    url: https://github.com/imbabamba/shoehorn
+  - name: Documentation
+    url: https://docs.shoehorn.example.com
+interfaces:
+  http:
+    baseUrl: http://localhost:8080
+    openapi: ./api/openapi.yaml
+  grpc:
+    package: shoehorn.api.v1
+    services:
+      - CatalogService
+      - SearchService
+relations:
+  - type: depends_on
+    target: database:postgresql
+    notes: Primary data store
+  - type: depends_on
+    target: service:typesense
+    notes: Search functionality
+  - type: publishes_to
+    target: topic:catalog-events
+    notes: Entity lifecycle events

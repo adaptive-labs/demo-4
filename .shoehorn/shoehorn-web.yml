@@ -1,0 +1,30 @@
+schemaVersion: 1
+service:
+  id: shoehorn-web
+  name: Shoehorn Web Portal
+  type: frontend
+owner:
+  - type: team
+    id: platform-team
+lifecycle: production
+tags:
+  - frontend
+  - svelte
+  - typescript
+  - web
+links:
+  - name: Repository
+    url: https://github.com/imbabamba/shoehorn
+  - name: Live Site
+    url: https://portal.shoehorn.example.com
+interfaces:
+  http:
+    baseUrl: http://localhost:4180
+relations:
+  - type: calls
+    target: service:shoehorn-api
+    via: GraphQL
+    notes: Primary API dependency
+  - type: depends_on
+    target: service:oauth2-proxy
+    notes: Authentication proxy
