@@ -3,6 +3,7 @@ service:
   id: test1
   name: test1
   type: service
+  description: this is a test service
 owner:
   - type: team
     id: platform-team
