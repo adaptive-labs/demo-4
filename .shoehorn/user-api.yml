@@ -1,0 +1,75 @@
+schemaVersion: 1
+service:
+  id: user-api
+  name: User Management API
+  type: api
+owner:
+  - type: team
+    id: platform-team
+  - type: team
+    id: backend-team
+lifecycle: production
+tags:
+  - api
+  - golang
+  - rest
+  - users
+  - authentication
+  - microservice
+links:
+  - name: Repository
+    url: https://github.com/company/user-api
+  - name: Documentation
+    url: https://docs.company.com/user-api
+  - name: OpenAPI Spec
+    url: https://api.company.com/users/openapi.json
+  - name: Production Monitoring
+    url: https://grafana.company.com/d/user-api
+  - name: Staging Environment
+    url: https://staging-api.company.com/users
+interfaces:
+  http:
+    baseUrl: https://api.company.com/users
+    openapi: ./api/openapi.yaml
+    version: v1
+    auth:
+      type: oauth2
+    rateLimits:
+      requestsPerMinute: 600
+  grpc:
+    package: user.v1
+    services:
+      - UserService
+      - AuthService
+relations:
+  - type: depends_on
+    target: database:postgresql-users
+    notes: Primary user data store with encrypted PII
+  - type: depends_on
+    target: database:redis-sessions
+    notes: Session storage and caching layer
+  - type: publishes_to
+    target: topic:user-events
+    notes: User lifecycle events (created, updated, deleted)
+  - type: publishes_to
+    target: topic:auth-events
+    notes: Authentication and authorization events
+  - type: consumes_api
+    target: service:email-service
+    notes: Sends welcome emails and notifications
+  - type: consumes_api
+    target: service:analytics-service
+    notes: Tracks user behavior and metrics
+  - type: via
+    target: service:api-gateway
+    notes: All external traffic routes through API gateway
+extras:
+  - type: slackchannel
+    target: channel:platform-team
+    notes: Primary team communication
+  - type: slackchannel
+    target: channel:user-api-alerts
+    notes: Automated alerts and monitoring notifications
+  - type: teamLinks
+    target: link:https://wiki.company.com/user-api
+    notes: Internal documentation and runbooks

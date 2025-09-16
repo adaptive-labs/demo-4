@@ -1,0 +1,43 @@
+schemaVersion: 1
+service:
+  id: platform-team
+  name: Platform Engineering Team
+  type: team
+owner:
+  - type: team
+    id: engineering-leadership
+lifecycle: production
+tags:
+  - team
+  - platform
+  - infrastructure
+  - devops
+links:
+  - name: Team Wiki
+    url: https://wiki.company.com/platform-team
+  - name: Team Calendar
+    url: https://calendar.company.com/platform
+  - name: Oncall Schedule
+    url: https://pagerduty.company.com/platform
+  - name: Team Metrics Dashboard
+    url: https://grafana.company.com/d/platform-team
+relations:
+  - type: owns
+    target: service:user-api
+    notes: Primary maintainer and owner
+  - type: owns
+    target: service:api-gateway
+    notes: Infrastructure component ownership
+  - type: collaborates_with
+    target: team:backend-team
+    notes: Joint ownership of API services
+extras:
+  - type: slackchannel
+    target: channel:platform-team
+    notes: Primary team communication
+  - type: slackchannel
+    target: channel:platform-alerts
+    notes: Infrastructure alerts and incidents
+  - type: teamLinks
+    target: link:https://github.com/orgs/company/teams/platform
+    notes: GitHub team for repository access
