@@ -1,6 +1,6 @@
 schemaVersion: 1
 service:
-  id: platform-team
+  id: test-team
   name: Platform Engineering Team
   type: team
 owner:

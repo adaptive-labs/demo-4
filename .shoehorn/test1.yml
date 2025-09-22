@@ -6,7 +6,7 @@ service:
   description: this is a test service
 owner:
   - type: team
-    id: platform-team
+    id: test-team
 lifecycle: production
 tags:
   - golang

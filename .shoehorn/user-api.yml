@@ -5,7 +5,7 @@ service:
   type: api
 owner:
   - type: team
-    id: platform-team
+    id: test-team
   - type: team
     id: backend-team
 lifecycle: production
