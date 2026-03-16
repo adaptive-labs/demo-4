@@ -1,6 +1,0 @@
-site_name: Demo 4
-
-nav:
-  - Introduction: 'README.md'
-  - Auth: 'auth.md'
-  - Commands: 'commands.md'
